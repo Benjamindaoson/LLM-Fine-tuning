@@ -1,0 +1,48 @@
+project: 金融大模型领域微调与数值推理增强
+base_model: Qwen/Qwen3.5-9B
+teacher_model: Qwen/Qwen3.8-27B
+production_scale:
+  raw_financial_texts: 1600000
+  supervised_examples: 128000
+  validation_examples: 2000
+  heldout_examples: 8000
+  generation_batch_success: 4999
+  generation_batch_total: 5000
+training:
+  method: SFT + LoRA + DeepSpeed ZeRO-2
+  gpus: 4
+  max_length: 4096
+  per_device_batch: 3
+  gradient_accumulation: 16
+  global_effective_batch: 192
+  eval_steps: 300
+  save_steps: 300
+  early_stopping_patience: 5
+  early_stopping_threshold: 0.002
+  stage1:
+    purpose: 金融知识与常见分析任务
+    lora_r: 32
+    lora_alpha: 64
+    learning_rate: 5.0e-6
+    epochs_cap: 5
+  stage2:
+    purpose: 数值推理与多轮分析
+    replay_ratio: 0.20
+    lora_r: 24
+    lora_alpha: 48
+    learning_rate: 2.0e-6
+    epochs_cap: 4
+serving:
+  engine: vLLM
+  tensor_parallel_size: 2
+  base_port: 8000
+  tuned_port: 8001
+evaluation:
+  internal_heldout: 8000
+  external_benchmark: FinanceIQ
+  metrics:
+    - task_accuracy
+    - numerical_factual_accuracy
+    - unsupported_number_rate
+    - answer_only_perplexity
+    - latency

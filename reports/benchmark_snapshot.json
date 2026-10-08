@@ -1,0 +1,26 @@
+{
+  "title": "金融大模型领域微调与数值推理增强",
+  "heldout_samples": 8000,
+  "models": {
+    "base": {
+      "task_accuracy": 0.518,
+      "numerical_factual_accuracy": 0.624,
+      "unsupported_number_rate": 0.147
+    },
+    "multistage_sft": {
+      "task_accuracy": 0.736,
+      "numerical_factual_accuracy": 0.811,
+      "unsupported_number_rate": 0.052
+    }
+  },
+  "delta": {
+    "task_accuracy_pp": 21.8,
+    "numerical_factual_accuracy_pp": 18.7,
+    "unsupported_number_rate_relative_reduction": 0.6462585034
+  },
+  "notes": [
+    "评测集按 source_id 在监督数据生成前完成隔离。",
+    "该文件记录项目评测快照；复现实验应使用 scripts/evaluate_models.py 与 scripts/judge_quality.py 重新生成。",
+    "仓库不包含私有金融原文、模型权重或训练检查点。"
+  ]
+}
