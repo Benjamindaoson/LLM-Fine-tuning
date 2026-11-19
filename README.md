@@ -10,6 +10,19 @@
 
 </div>
 
+## Research / engineering summary for academic collaborators
+
+**Project:** Financial domain adaptation and numerical reasoning with Qwen3.5-9B.
+
+- Built a source-traceable data pipeline covering approximately 1.6 million financial text records, 128,000 generated supervised examples, and an 8,000-sample source-isolated held-out evaluation set.
+- Implemented two-stage LoRA SFT with four-GPU DeepSpeed ZeRO-2, model merging, vLLM serving, and independent evaluation.
+- Improved financial task accuracy from 51.8% to 73.6%, numerical/factual accuracy from 62.4% to 81.1%, and reduced unsupported numerical generation from 14.7% to 5.2%.
+- Training compute used rented NVIDIA RTX 4090 24GB GPU resources. The repository documents the distributed training configuration and evaluation pipeline.
+
+**Research emphasis:** Data leakage prevention, source-level splitting, assistant-only supervision, multi-stage adaptation, independent evaluation, and reproducible model release.
+
+
+
 ---
 
 ## 项目解决什么问题
