@@ -10,6 +10,8 @@
 
 </div>
 
+**English:** [Full English README](README_EN.md)
+
 ## Research / engineering summary for academic collaborators
 
 **Project:** Financial domain adaptation and numerical reasoning with Qwen3.5-9B.
